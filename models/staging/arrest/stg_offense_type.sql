@@ -1,5 +1,3 @@
-{{ config(materialized='view') }}
-
 select
     {{ dbt_utils.surrogate_key(
       'ARREST_KEY',
