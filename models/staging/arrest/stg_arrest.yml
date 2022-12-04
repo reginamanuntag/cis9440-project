@@ -6,6 +6,9 @@ models:
    columns:
      - name: Perpetrator_ID
        description: Surrogate key of the offender
+       tests:
+          - unique
+          - not_null
      - name: Arrest_Key
        description: Foreign key from Arrest Fact table
      - name: PERP_SEX
@@ -21,6 +24,9 @@ models:
    columns:
      - name: Offense_ID
        description: Surrogate key of the offense
+       tests:
+          - unique
+          - not_null
      - name: Arrest_Key
        description: Foreign key from Arrest Fact table
      - name: OFNS_DESC
@@ -28,4 +34,4 @@ models:
      - name: KY_CD
        description: Internal code description
      - name: LAW_CAT_CD
-       description: Law category description
+       description: "{{ doc('offense_level') }}"
