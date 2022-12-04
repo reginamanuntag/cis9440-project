@@ -55,3 +55,16 @@ models:
       description: Longitude
 
  - name: stg_date
+   description: Staged date data
+   columns: 
+    - name: Date_ID
+      description: Date ID
+      tests:
+        - unique
+        - not_null
+    - name: Date
+      description: Date
+    - name: Month
+      description: Month
+    - name: Year
+      description:  Year

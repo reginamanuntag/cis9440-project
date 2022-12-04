@@ -7,7 +7,7 @@ ARREST_DATE,
 
 Arrest_Key,
 
-{{ dbt_date.day_of_month("ARREST_DATE") }} as Day,
+{{ dbt_date.day_of_month("ARREST_DATE") }} as Date,
 
 {{ dbt_date.month_name("ARREST_DATE") }} as Month,
 
