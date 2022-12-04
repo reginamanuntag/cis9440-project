@@ -1,0 +1,41 @@
+version: 2
+models:
+ arrest:
+  staging:
+    +materialized: view
+  core:
+    +materialized: table
+models:
+  - name: stg_location
+    description: Staged location data 
+    columns: 
+      - name: Location_ID
+        description: Location ID
+        tests:
+          - unique
+          - not_null
+      - name: Zipcode
+        description: Zipcode
+        tests:
+          - unique
+          - not_null
+      - name: ARREST_BORO
+        description: Borough
+        tests:
+          - unique
+          - not_null
+      - name: ARREST_PRECINCT
+        description: Precinct
+        tests:
+          - unique
+          - not_null
+      - name: Latitude
+        description:  Latitude
+        tests:
+          - unique
+          - not_null
+      - name: Longitude
+        description: Longitude 
+        tests:
+          - unique
+          - not_null
