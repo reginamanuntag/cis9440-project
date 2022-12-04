@@ -35,3 +35,22 @@ models:
        description: Internal code description
      - name: LAW_CAT_CD
        description: "{{ doc('offense_level') }}"
+
+ - name: stg_location
+   description: Staged location data 
+   columns: 
+    - name: Location_ID
+      description: Location ID
+      tests:
+        - unique
+        - not_null
+    - name: Zipcode
+      description: Zipcode
+    - name: ARREST_BORO
+      description: Borough
+    - name: ARREST_PRECINCT
+      description: Precinct
+    - name: Latitude
+      description:  Latitude
+    - name: Longitude
+      description: Longitude
