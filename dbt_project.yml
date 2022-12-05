@@ -1,7 +1,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'arrest'
+name: 'project01'
 version: '1.0.0'
 config-version: 2
 
@@ -37,4 +37,9 @@ models:
     marts:
       core:
         +materialized: table
-  
+   nyc_noise_complaints:
+    staging:
+      +materialized: view
+    marts:
+      core:
+        +materialized: table
