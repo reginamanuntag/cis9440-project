@@ -8,4 +8,4 @@ select
     KY_CD as Offense_Code,
     LAW_CAT_CD as Offense_Level 
 
-from {{ source('Arrest', 'nyc_arrests') }}
+from {{ source('arrest', 'nyc_arrests') }}

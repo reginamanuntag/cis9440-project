@@ -8,4 +8,4 @@ select
     PERP_RACE as Race,
     AGE_GROUP as Age_Group
 
-from {{ source('Arrest', 'nyc_arrests') }}
+from {{ source('arrest', 'nyc_arrests') }}
