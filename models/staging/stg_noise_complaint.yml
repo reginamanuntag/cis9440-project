@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_agency
+    description: Staged responding agency from 311 Service Requests
+    columns:
+    - name: Agency_ID
+      description: Surrogate key of the agency
+      tests:
+        - unique
+        - not_null
+    - name: Complaint_ID
+      description: Foreign key from Complaint Fact table
+    - name: Agency_Name
+      description: The name of the responding agency
+
+  - name: stg_channel
+    description: The channel by which the complaint was submitted from 311 Service Requests
+    columns:
+    - name: Channel_ID
+      description: Surrogate key of the channel
+      tests:
+        - unique
+        - not_null
+    - name: Complaint_ID
+      description: Foreign key from Complaint Fact table
+    - name: Channel_Name
+      description: The name of the channel
