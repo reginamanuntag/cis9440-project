@@ -13,4 +13,4 @@ Arrest_Key,
 
 cast({{ dbt_date.date_part('year', 'ARREST_DATE') }} as {{ type_int() }}) as Year
 
-FROM {{ source('Arrest', 'nyc_arrests') }}
+FROM {{ source('arrest', 'nyc_arrests') }}
