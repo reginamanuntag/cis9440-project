@@ -26,3 +26,83 @@ models:
       description: Foreign key from Complaint Fact table
     - name: Channel_Name
       description: The name of the channel
+
+  - name: stg_noise_location
+    description: Staged location data
+    columns:
+    - name: Location_ID
+      description: Location ID
+      tests:
+        - unique
+        - not_null
+    - name: Zipcode
+      description: Zipcode
+    - name: Borough
+      description: Borough
+    - name: Complaint_Location_Type
+      description: Complaint Location Type
+    - name: Incident_Address
+      description: Incident Address
+    - name: Address_Type
+      description: Address Type
+    - name: Street
+      description: Street
+    - name: City
+      description: City
+    - name: Latitude
+      description:  Latitude
+    - name: Longitude
+      description: Longitude
+
+  - name: stg_noise_date
+    description: Staged Date data
+    columns:
+    - name: Date_ID
+      description: Date ID
+      tests:
+        - unique
+        - not_null
+    - name: Date
+      description: Date
+    - name: Day
+      description: Day
+    - name: Month
+      description: Month
+    - name: Year
+      description: Year
+
+  - name: stg_complaint_type
+    description: Staged complaint type from 311 Service Requests
+    columns:
+    - name: Complaint_Type_ID
+      description: Surrogate key of the complaint
+      tests:
+        - unique
+        - not_null
+    - name: Complaint_ID
+      description: Foreign key from Fact Table
+      tests:
+        - unique
+        - not_null   
+    - name: Complaint_Type_Name
+      description: Name of Complaint
+    - name: Descriptor
+      description: Description of complaint
+
+  - name: stg_status
+    description: Staged status from 311 Service Requests
+    columns:
+    - name: Status_ID
+      description: Surrogate key of the status
+      tests:
+        - unique
+        - not_null
+    - name: Complaint_ID
+      description: Foreign key from Fact Table
+      tests:
+        - unique
+        - not_null   
+    - name: Status
+      description: Status of the complaint
+    - name: Resolution_Description
+      description: Description of resolution

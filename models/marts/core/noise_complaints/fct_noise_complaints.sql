@@ -12,3 +12,7 @@ left join {{ ref('dim_channel') }} using (Complaint_ID)
 left join {{ ref('dim_complaint_status') }} using (Complaint_ID)
 
 left join {{ ref('dim_complaint_type') }} using (Complaint_ID)
+
+left join {{ ref('dim_noise_date') }} using (Complaint_ID)
+
+left join {{ ref('dim_noise_location') }} using (Complaint_ID)
