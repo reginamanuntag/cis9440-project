@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: '311'
+    database: cis9440-project
+    schema: '311'
+    tables:
+      - name: nyc_noise_complaint
