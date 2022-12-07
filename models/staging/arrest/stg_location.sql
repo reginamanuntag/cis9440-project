@@ -10,4 +10,4 @@ select
    Latitude,
    Longitude
  
-from {{ source('Arrest', 'nyc_arrests') }}
+from {{ source('arrest', 'nyc_arrests') }}

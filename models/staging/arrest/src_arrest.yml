@@ -1,8 +1,8 @@
 version: 2
  
 sources:
- - name: Arrest
+ - name: arrest
    database: cis9440-project
-   schema: Arrest
+   schema: arrest
    tables:
-     - name: nyc_arrests
+     - name: nyc_arrests 
