@@ -1,45 +1,4 @@
 version: 2
-<<<<<<< HEAD
-models:
- arrest:
-  staging:
-    +materialized: view
-  core:
-    +materialized: table
-models:
-  - name: stg_location
-    description: Staged location data 
-    columns: 
-      - name: Location_ID
-        description: Location ID
-        tests:
-          - unique
-          - not_null
-      - name: Zipcode
-        description: Zipcode
-      - name: ARREST_BORO
-        description: Borough
-      - name: ARREST_PRECINCT
-        description: Precinct
-      - name: Latitude
-        description:  Latitude
-      - name: Longitude
-        description: Longitude 
-  - name: stg_date
-    description: Staged date data 
-    columns: 
-      - name: Date_ID
-        description: Date ID
-        tests:
-          - unique
-          - not_null
-      - name: Date
-        description: Date
-      - name: Month
-        description: Month
-      - name: Year
-        description: Year
-=======
  
 models:
  - name: stg_perpetrator_profile
@@ -109,4 +68,3 @@ models:
       description: Month
     - name: Year
       description:  Year
->>>>>>> d40ac0cb23408d83cee734a4a45abdb862984bea
