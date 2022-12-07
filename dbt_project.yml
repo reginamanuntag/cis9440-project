@@ -1,7 +1,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'project01'
+name: 'arrests'
 version: '1.0.0'
 config-version: 2
 
@@ -31,14 +31,8 @@ clean-targets:         # directories to be removed by `dbt clean`
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 models:
-  marts:
-    core:
-      arrests:
+    marts:
+      core:
         +materialized: table
-      noise_complaints:
-        +materialized: table
-  staging:
-    arrests:
-      +materialized: view
-    noise_complaints:
+    staging:
       +materialized: view
