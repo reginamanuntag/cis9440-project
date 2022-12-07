@@ -1,4 +1,5 @@
 version: 2
+<<<<<<< HEAD
 models:
  arrest:
   staging:
@@ -38,3 +39,74 @@ models:
         description: Month
       - name: Year
         description: Year
+=======
+ 
+models:
+ - name: stg_perpetrator_profile
+   description: Staged perpetrator profile from nyc arrests
+   columns:
+     - name: Perpetrator_ID
+       description: Surrogate key of the offender
+       tests:
+          - unique
+          - not_null
+     - name: Arrest_Key
+       description: Foreign key from Arrest Fact table
+     - name: PERP_SEX
+       description: Sex of the offender
+     - name: PERP_RACE
+       description: Race of the offender
+     - name: AGE_GROUP
+       description: Age of the offender
+
+ - name: stg_offense_type
+   description: Staged offense type from nyc arrests dataset
+   columns:
+     - name: Offense_ID
+       description: Surrogate key of the offense
+       tests:
+          - unique
+          - not_null
+     - name: Arrest_Key
+       description: Foreign key from Arrest Fact table
+     - name: OFNS_DESC
+       description: Offense description
+     - name: KY_CD
+       description: Internal code description
+     - name: LAW_CAT_CD
+       description: "{{ doc('offense_level') }}"
+
+ - name: stg_location
+   description: Staged location data 
+   columns: 
+    - name: Location_ID
+      description: Location ID
+      tests:
+        - unique
+        - not_null
+    - name: Zipcode
+      description: Zipcode
+    - name: ARREST_BORO
+      description: Borough
+    - name: ARREST_PRECINCT
+      description: Precinct
+    - name: Latitude
+      description:  Latitude
+    - name: Longitude
+      description: Longitude
+
+ - name: stg_date
+   description: Staged date data
+   columns: 
+    - name: Date_ID
+      description: Date ID
+      tests:
+        - unique
+        - not_null
+    - name: Date
+      description: Date
+    - name: Month
+      description: Month
+    - name: Year
+      description:  Year
+>>>>>>> d40ac0cb23408d83cee734a4a45abdb862984bea

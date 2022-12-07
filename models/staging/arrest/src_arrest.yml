@@ -1,4 +1,5 @@
 version: 2
+<<<<<<< HEAD
  
 sources:
  - name: arrest
@@ -6,3 +7,12 @@ sources:
    schema: arrest
    tables:
      - name: nyc_arrests 
+=======
+
+sources:
+  - name: arrest
+    database: cis9440-project
+    schema: arrest
+    tables:
+      - name: nyc_arrests
+>>>>>>> d40ac0cb23408d83cee734a4a45abdb862984bea
