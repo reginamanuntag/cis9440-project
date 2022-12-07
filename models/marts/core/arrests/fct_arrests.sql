@@ -14,7 +14,7 @@ perp_dim as (
     select * from {{ ref('dim_perpetrator_profile') }}
 )
 
-select ARREST_KEY,
+select ARREST_KEY as Arrest_ID,
 Date_ID,
 Location_ID,
 Offense_ID,
