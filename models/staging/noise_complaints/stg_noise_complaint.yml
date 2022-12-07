@@ -9,8 +9,6 @@ models:
       tests:
         - unique
         - not_null
-    - name: Complaint_ID
-      description: Foreign key from Complaint Fact table
     - name: Agency_Name
       description: The name of the responding agency
 
@@ -22,8 +20,6 @@ models:
       tests:
         - unique
         - not_null
-    - name: Complaint_ID
-      description: Foreign key from Complaint Fact table
     - name: Channel_Name
       description: The name of the channel
 
@@ -62,11 +58,6 @@ models:
       tests:
         - unique
         - not_null
-    - name: Complaint_ID
-      description: Foreign key from Fact Table
-      tests:
-        - unique
-        - not_null   
     - name: Complaint_Type_Name
       description: Name of Complaint
     - name: Descriptor
@@ -80,11 +71,6 @@ models:
       tests:
         - unique
         - not_null
-    - name: Complaint_ID
-      description: Foreign key from Fact Table
-      tests:
-        - unique
-        - not_null   
     - name: Status
       description: Status of the complaint
     - name: Resolution_Description

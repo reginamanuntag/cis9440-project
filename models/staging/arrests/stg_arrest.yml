@@ -9,8 +9,6 @@ models:
        tests:
           - unique
           - not_null
-     - name: Arrest_Key
-       description: Foreign key from Arrest Fact table
      - name: PERP_SEX
        description: Sex of the offender
      - name: PERP_RACE
@@ -26,8 +24,6 @@ models:
        tests:
           - unique
           - not_null
-     - name: Arrest_Key
-       description: Foreign key from Arrest Fact table
      - name: OFNS_DESC
        description: Offense description
      - name: KY_CD

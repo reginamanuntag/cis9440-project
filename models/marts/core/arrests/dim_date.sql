@@ -10,10 +10,10 @@ WITH date_spine AS (
 )
 
     SELECT
-    row_number() over() as date_dim_id,
-      date_day,
-    EXTRACT (Day FROM date_day) as day,
-    EXTRACT (month FROM date_day) as month,
-    EXTRACT (year FROM date_day) as year
+    row_number() over() as Date_ID,
+      Date_Day,
+    EXTRACT (Day FROM Date_Day) as Day,
+    EXTRACT (month FROM Date_Day) as Month,
+    EXTRACT (year FROM Date_Day) as Year
 
     FROM date_spine
