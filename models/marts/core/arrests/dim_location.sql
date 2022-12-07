@@ -13,11 +13,11 @@ with
             arrest_location.precinct,
             arrest_location.latitude,
             arrest_location.longitude,
-            noise_location.complaint_location_type,
-            noise_location.incident_address,
-            noise_location.address_type,
-            noise_location.street,
-            noise_location.city
+            COALESCE(noise_location.complaint_location_type, "Not applicable") as Complaint_Location_Type,
+            COALESCE(noise_location.incident_address, "Not applicable") as Incident_Address,
+            COALESCE(noise_location.address_type, "Not applicable") as Address_Type,
+            COALESCE(noise_location.street, "Not applicable") as Street,
+            COALESCE(noise_location.city, "Not applicable") as City
 
         from arrest_location
         full join
