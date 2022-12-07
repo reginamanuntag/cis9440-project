@@ -16,7 +16,7 @@ with
 
 select arrest_key as arrest_id, perpetrator_id, offense_id, location_id, date_id
 from arrest_data
-left join date_dim on (date_dim.date_day = arrest_data.arrest_date)
+left join date_dim on (date_dim.date = arrest_data.arrest_date)
 left join
     location_dim
     on (

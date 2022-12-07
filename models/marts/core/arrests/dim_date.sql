@@ -15,7 +15,7 @@ with
 
 select
     row_number() over () as date_id,
-    date_day,
+    date_day as date,
     extract(day from date_day) as day,
     extract(month from date_day) as month,
     extract(year from date_day) as year

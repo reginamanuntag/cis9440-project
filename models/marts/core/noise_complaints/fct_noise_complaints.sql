@@ -28,7 +28,7 @@ select
     location_id
 
 from noise_data
-left join date_dim on (date_dim.date_day = noise_data.created_date)
+left join date_dim on (date_dim.date = noise_data.created_date)
 left join location_dim on (location_dim.zipcode = noise_data.incident_zip)
 left join agency_dim on (agency_dim.agency_name = noise_data.agency_name)
 left join channel_dim on (channel_dim.channel_name = noise_data.open_data_channel_type)
