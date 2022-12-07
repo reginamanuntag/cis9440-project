@@ -1,16 +1,19 @@
-SELECT {{ dbt_utils.surrogate_key(
-      'ARREST_KEY',
-      'ARREST_DATE'
-  ) }}  as Date_ID, 
-
-ARREST_DATE,
-
-Arrest_Key,
-
-{{ dbt_date.day_of_month("ARREST_DATE") }} as Date,
-
-{{ dbt_date.month_name("ARREST_DATE") }} as Month,
-
-cast({{ dbt_date.date_part('year', 'ARREST_DATE') }} as {{ type_int() }}) as Year
-
-FROM {{ source('arrest', 'nyc_arrests') }}
+WITH date_spine AS (
+ 
+ {{ dbt_utils.date_spine(
+     datepart="day",
+     start_date="cast('2019-01-01' as date)",
+     end_date="cast('2022-12-30' as date)"
+    )
+ }}
+ 
+)
+ 
+   SELECT
+   row_number() over() as date_dim_id,
+     DATE(date_day) AS date_day,
+   EXTRACT (Day FROM date_day) as day,
+   EXTRACT (month FROM date_day) as month,
+   EXTRACT (year FROM date_day) as year
+ 
+    FROM date_spine
