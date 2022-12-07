@@ -1,6 +1,6 @@
-select ROW_NUMBER() OVER() AS Agency_ID, *
+select row_number() over () as agency_id, *
 from (
-    select distinct Agency_Name
-    
-    from {{ source('311', 'nyc_noise_complaint') }}
+    select distinct agency_name
+     
+    from {{ source("311", "nyc_noise_complaint") }}
 )

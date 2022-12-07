@@ -1,1 +1,3 @@
-select * from {{ ref('stg_status') }}
+{{ config(materialized="table") }} 
+
+select * from {{ ref("stg_status") }}

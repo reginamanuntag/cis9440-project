@@ -1,1 +1,3 @@
-select * from {{ ref('stg_perpetrator_profile')}}
+{{ config(materialized="table") }} 
+
+select * from {{ ref("stg_perpetrator_profile") }}

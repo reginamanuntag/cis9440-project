@@ -1,7 +1,6 @@
-select ROW_NUMBER() OVER() AS Channel_ID, *
+select row_number() over () as channel_id, *
 from (
-    select distinct
-        Open_Data_Channel_Type as Channel_Name
-    
-    from {{ source('311', 'nyc_noise_complaint') }}
+    select distinct open_data_channel_type as channel_name
+
+    from {{ source("311", "nyc_noise_complaint") }}
 )

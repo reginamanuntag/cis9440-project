@@ -1,10 +1,8 @@
-with perp_profile as(
-    select distinct 
-        PERP_SEX as Sex,
-        PERP_RACE as Race,
-        AGE_GROUP as Age_Group
+with
+    perp_profile as (
+        select distinct perp_sex as sex, perp_race as race, age_group as age_group
 
-    from {{ source('arrest', 'nyc_arrests') }}
-)
-select ROW_NUMBER() OVER() AS Perpetrator_ID, *
+        from {{ source("arrest", "nyc_arrests") }}
+    )
+select row_number() over () as perpetrator_id, *
 from perp_profile

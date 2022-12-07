@@ -1,1 +1,3 @@
-select * from {{ ref('stg_agency') }}
+{{ config(materialized="table") }} 
+
+select * from {{ ref("stg_agency") }}

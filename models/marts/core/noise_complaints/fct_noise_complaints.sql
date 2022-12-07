@@ -1,41 +1,46 @@
-with date_dim as (
-    select * from {{ ref('dim_date') }}
-),
+{{ config(materialized="table") }}
 
-location_dim as (
-    select * from {{ ref('dim_location') }}
-), 
+with
+    noise_data as (
+        select round(latitude, 6) as latitude, round(longitude, 6) as longitude, *
+        from {{ source("311", "nyc_noise_complaint") }}
+    ),
 
-agency_dim as (
-    select * from {{ ref('dim_agency') }}
-),
+    date_dim as (select * from {{ ref("dim_date") }}),
 
-channel_dim as (
-    select * from {{ ref('dim_channel') }}
-),
+    location_dim as (select * from {{ ref("dim_location") }}),
 
-status_dim as (
-    select * from {{ ref('dim_complaint_status') }}
-),
+    agency_dim as (select * from {{ ref("dim_agency") }}),
 
-complaint_type_dim as (
-    select * from {{ ref('dim_complaint_type') }}
-) 
+    channel_dim as (select * from {{ ref("dim_channel") }}),
 
-select Unique_Key as Complaint_ID,
-Channel_ID,
-Agency_ID,
-Status_ID,
-Complaint_Type_ID,
-Date_ID,
-Location_ID
+    status_dim as (select * from {{ ref("dim_complaint_status") }}),
 
-from {{ source('311', 'nyc_noise_complaint') }}
-left join date_dim on (date_dim.Date_Day=nyc_noise_complaint.Created_Date)
-left join location_dim on (location_dim.Zipcode=nyc_noise_complaint.Incident_Zip)
-left join agency_dim on (agency_dim.Agency_Name=nyc_noise_complaint.Agency_Name)
-left join channel_dim on (channel_dim.Channel_Name=nyc_noise_complaint.Open_Data_Channel_Type)
-left join status_dim on (status_dim.Status=nyc_noise_complaint.Status and
-status_dim.Resolution_Description=nyc_noise_complaint.Resolution_Description)
-left join complaint_type_dim on (complaint_type_dim.Complaint_Type_Name=nyc_noise_complaint.Complaint_Type and
-complaint_type_dim.Descriptor=nyc_noise_complaint.Descriptor)
+    complaint_type_dim as (select * from {{ ref("dim_complaint_type") }})
+
+select
+    unique_key as complaint_id,
+    channel_id,
+    agency_id,
+    status_id,
+    complaint_type_id,
+    date_id,
+    location_id
+
+from noise_data
+left join date_dim on (date_dim.date_day = noise_data.created_date)
+left join location_dim on (location_dim.zipcode = noise_data.incident_zip)
+left join agency_dim on (agency_dim.agency_name = noise_data.agency_name)
+left join channel_dim on (channel_dim.channel_name = noise_data.open_data_channel_type)
+left join
+    status_dim
+    on (
+        status_dim.status = noise_data.status
+        and status_dim.resolution_description = noise_data.resolution_description
+    )
+left join
+    complaint_type_dim
+    on (
+        complaint_type_dim.complaint_type_name = noise_data.complaint_type
+        and complaint_type_dim.descriptor = noise_data.descriptor
+    )
