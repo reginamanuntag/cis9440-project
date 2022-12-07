@@ -1,13 +1,12 @@
-select
-    {{ dbt_utils.surrogate_key(
-      'ARREST_KEY',
-      'Zipcode'
-  ) }}  as Location_ID,
-    Arrest_Key,
+with location as (
+  select distinct
     Zipcode,
-    ARREST_BORO,
-    ARREST_PRECINCT,
-    Latitude,
-    Longitude
+    ARREST_BORO as Borough,
+    ARREST_PRECINCT as Precinct,
+    ROUND(Latitude, 6) as Latitude,
+    ROUND(Longitude, 6) as Longitude
 
-from {{ source('arrest', 'nyc_arrests') }}
+  from {{ source('arrest', 'nyc_arrests') }}
+)
+select ROW_NUMBER() OVER() AS Location_ID, *
+from location

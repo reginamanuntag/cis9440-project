@@ -54,23 +54,6 @@ models:
     - name: Longitude
       description: Longitude
 
-  - name: stg_noise_date
-    description: Staged Date data
-    columns:
-    - name: Date_ID
-      description: Date ID
-      tests:
-        - unique
-        - not_null
-    - name: Date
-      description: Date
-    - name: Day
-      description: Day
-    - name: Month
-      description: Month
-    - name: Year
-      description: Year
-
   - name: stg_complaint_type
     description: Staged complaint type from 311 Service Requests
     columns:

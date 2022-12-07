@@ -1,11 +1,10 @@
-select
-    {{ dbt_utils.surrogate_key(
-      'ARREST_KEY',
-      'KY_CD'
-  ) }} as Offense_ID,
-    ARREST_KEY as Arrest_Key,
-    OFNS_DESC as Description,
-    KY_CD as Offense_Code,
-    LAW_CAT_CD as Offense_Level 
+with offenses as (
+    select distinct 
+        KY_CD as Offense_Code,
+        OFNS_DESC as Description,
+        LAW_CAT_CD as Offense_Level
 
-from {{ source('arrest', 'nyc_arrests') }}
+    from {{ source('arrest', 'nyc_arrests') }}
+)
+select ROW_NUMBER() OVER() AS Offense_ID, *
+from offenses

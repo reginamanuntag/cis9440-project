@@ -1,1 +1,1 @@
-select * from {{ ref('stg_offense_type')}}
+select * from {{ ref('stg_offense_type') }}
