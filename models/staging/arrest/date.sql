@@ -12,7 +12,7 @@ WITH date_spine AS (
     SELECT
     row_number() over() as date_dim_id,
       date_day,
-    EXTRACT (day FROM date_day) as day
+    EXTRACT (Day FROM date_day) as day,
     EXTRACT (month FROM date_day) as month,
     EXTRACT (year FROM date_day) as year
   
